@@ -40,11 +40,15 @@ export default {
     };
   },
   watch: {
+    //When counter change, make a new request to update the table. TODO: optimize this.
     counter() {
       this.getProfileSubmissions();
     }
   },
   methods: {
+    /**
+     * Method for getting all profile submissions.
+     */
     async getProfileSubmissions() {
       try {
         const response = await this.$http.get(
@@ -77,9 +81,11 @@ export default {
         console.log(error);
       }
     },
-
+    /**
+     * Method that listen for the count of profile submissions.
+     */
     getRealtimeCount() {
-      console.log(this.$socket)
+      console.log(this.$socket);
       this.$socket.on("count", counter => {
         console.log("count", counter);
         this.counter = counter;

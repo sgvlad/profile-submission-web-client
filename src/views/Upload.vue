@@ -62,7 +62,9 @@ export default {
         this.module10count = module10count;
       });
     },
-
+    /**
+     * Submit profile submission form.
+     */
     async submitForm() {
       const formData = new FormData();
       formData.append("file", this.file[0]);
